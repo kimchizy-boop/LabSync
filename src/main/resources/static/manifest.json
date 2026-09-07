@@ -1,1 +1,11 @@
-{"name":"GMS Gadget Monitoring System","short_name":"GMS","start_url":"/","display":"standalone","background_color":"#17132b","theme_color":"#7c5cff","description":"Laboratory Gadget Monitoring System"}
+{
+  "name": "LabSync - Gadget Monitoring System",
+  "short_name": "LabSync",
+  "description": "Laboratory device borrowing, booking and monitoring system.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f5ff",
+  "theme_color": "#7c5cff",
+  "orientation": "any",
+  "icons": []
+}
