@@ -1,0 +1,23 @@
+LABSYNC — STEP 1: RAILWAY PREPARATION
+
+This project is prepared for a Railway deployment without GitHub.
+
+SQLite database path:
+- Local default: ./data/labsync.db
+- Railway: set GMS_DB=/data/labsync.db and mount a Railway Volume at /data
+
+Why /data matters:
+SQLite is a file. Railway's normal service filesystem is not the place to keep important database data permanently. The Railway Volume should be mounted at /data so the SQLite file survives redeploys/restarts.
+
+The app also enables SQLite WAL mode, a busy timeout, NORMAL synchronous mode, and foreign-key enforcement for the hosted runtime.
+
+DO NOT deploy the database yet if you have an important existing labsync.db. We will make a backup/copy before putting it into the hosted volume.
+
+Next deployment steps:
+1. Install/login to Railway CLI.
+2. Create/link a Railway project from this folder.
+3. Deploy with `railway up`.
+4. Add a Railway Volume mounted at /data.
+5. Set GMS_DB=/data/labsync.db.
+6. Generate a public domain.
+7. Test login, borrowing, returning, bookings, records, and admin functions.
