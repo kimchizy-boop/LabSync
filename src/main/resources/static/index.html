@@ -1,56 +1,198 @@
 <!doctype html>
+
 <html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#7c5cff"><link rel="manifest" href="/manifest.json">
 <title>GMS • Gadget Monitoring System</title><link rel="stylesheet" href="/styles.css"></head>
 <body>
 <div id="toast"></div>
+
 <section id="choiceView" class="login choiceView">
 <div class="choiceCard">
-  <div class="choiceHero"><div class="choiceLogo">G</div><b>GMS</b><h1>Gadget Monitoring System</h1><p>Laboratory device borrowing, booking and monitoring.</p></div>
+  <div class="choiceHero">
+    <div class="choiceLogo">G</div>
+    <b>GMS</b>
+    <h1>Gadget Monitoring System</h1>
+    <p>Laboratory device borrowing, booking and monitoring.</p>
+  </div>
+
   <div class="choiceActions">
-    <button class="choiceBtn primaryChoice" onclick="showUserLogin()"><strong>Borrow Devices</strong><small>Student / User account</small></button>
-    <button class="choiceBtn" onclick="showTeacherBooking()"><strong>Book Devices</strong><small>Teachers — no account required</small></button>
-    <button class="choiceBtn" onclick="showMonitor()"><strong>Monitor Borrow</strong><small>View current laboratory devices</small></button>
-    <button class="choiceBtn adminChoice" onclick="showAdminLogin()"><strong>Admin Login</strong><small>Administrator / Sub-Admin access</small></button>
+    <button class="choiceBtn primaryChoice" onclick="showUserLogin()">
+      <strong>Borrow Devices</strong>
+      <small>Student / User account</small>
+    </button>
+
+```
+<button class="choiceBtn" onclick="showTeacherBooking()">
+  <strong>Book Devices</strong>
+  <small>Teachers — no account required</small>
+</button>
+
+<button class="choiceBtn" onclick="showMonitor()">
+  <strong>Monitor Borrow</strong>
+  <small>View current laboratory devices</small>
+</button>
+
+<button class="choiceBtn adminChoice" onclick="showAdminLogin()">
+  <strong>Admin Login</strong>
+  <small>Administrator / Sub-Admin access</small>
+</button>
+
+<button class="choiceBtn" onclick="window.open('https://github.com/kimchizy-boop/LabSync/releases', '_blank')">
+  <strong>Download LabSync</strong>
+  <small>Download the Windows desktop application</small>
+</button>
+```
+
   </div>
 </div>
 </section>
+
 <section id="teacherBookingView" class="login hidden">
 <div class="publicCard">
   <button class="backBtn" onclick="showChoice()">← Back</button>
-  <div class="logo">G</div><h2>Book Laboratory Devices</h2><p>Teachers can submit a booking request without creating an account.</p>
+  <div class="logo">G</div>
+  <h2>Book Laboratory Devices</h2>
+  <p>Teachers can submit a booking request without creating an account.</p>
+
   <form id="teacherBookForm" class="form publicForm">
-    <label>Full Name<input id="tbfname" required placeholder="Teacher full name"></label>
-    <label>Laboratory<select id="tblab"><option>Calroom</option><option>Blue lab</option><option>Shs lab</option><option>Mac lab</option></select></label>
-    <label>Device Type<select id="tbdev"><option>Laptop</option><option>Tablet</option><option>Phone</option><option>Computer</option></select></label>
-    <div class="twoCol"><label>Number of Devices<input id="tbqty" type="number" min="1" max="50" value="1" required></label><label>Hours<input id="tbhours" type="number" min="0.5" step="0.5" value="2" required></label></div>
-    <label>Date<input id="tbdate" type="date" required></label>
-    <div class="actions full"><button class="btn primary" type="submit">Submit Booking Request</button></div>
+    <label>Full Name
+      <input id="tbfname" required placeholder="Teacher full name">
+    </label>
+
+```
+<label>Laboratory
+  <select id="tblab">
+    <option>Calroom</option>
+    <option>Blue lab</option>
+    <option>Shs lab</option>
+    <option>Mac lab</option>
+  </select>
+</label>
+
+<label>Device Type
+  <select id="tbdev">
+    <option>Laptop</option>
+    <option>Tablet</option>
+    <option>Phone</option>
+    <option>Computer</option>
+  </select>
+</label>
+
+<div class="twoCol">
+  <label>Number of Devices
+    <input id="tbqty" type="number" min="1" max="50" value="1" required>
+  </label>
+
+  <label>Hours
+    <input id="tbhours" type="number" min="0.5" step="0.5" value="2" required>
+  </label>
+</div>
+
+<label>Date
+  <input id="tbdate" type="date" required>
+</label>
+
+<div class="actions full">
+  <button class="btn primary" type="submit">Submit Booking Request</button>
+</div>
+```
+
   </form>
+
   <div id="teacherBookResult"></div>
 </div>
 </section>
+
 <section id="monitorView" class="login hidden">
 <div class="publicCard monitorCard">
   <button class="backBtn" onclick="showChoice()">← Back</button>
-  <div class="logo">G</div><h2>Monitor Borrowed Devices</h2><p>Current devices borrowed in the laboratory.</p>
+  <div class="logo">G</div>
+  <h2>Monitor Borrowed Devices</h2>
+  <p>Current devices borrowed in the laboratory.</p>
   <div id="publicMonitorList" class="empty">Loading…</div>
   <button class="btn secondary" onclick="loadPublicMonitor()">Refresh</button>
 </div>
 </section>
+
 <section id="loginView" class="login hidden">
-<div class="hero"><b>GMS</b><h1>Gadget Monitoring System</h1><p>Borrow, track and manage laboratory devices from one place.</p><div class="pills"><span>Phone</span><span>Tablet</span><span>Laptop</span><span>PC</span></div></div>
-<form id="loginForm" class="loginCard"><button type="button" class="backBtn loginBack" onclick="showChoice()">← Back</button><div class="logo">G</div><h2 id="loginHeading">Welcome back</h2><p id="loginSubtitle">Sign in to your laboratory account.</p><label>Username<input id="loginUser" required></label><label>Password<input id="loginPass" type="password" required></label><button>Sign in</button><small>Uses your existing SQLite accounts.</small></form>
+<div class="hero">
+  <b>GMS</b>
+  <h1>Gadget Monitoring System</h1>
+  <p>Borrow, track and manage laboratory devices from one place.</p>
+  <div class="pills">
+    <span>Phone</span>
+    <span>Tablet</span>
+    <span>Laptop</span>
+    <span>PC</span>
+  </div>
+</div>
+
+<form id="loginForm" class="loginCard">
+  <button type="button" class="backBtn loginBack" onclick="showChoice()">← Back</button>
+  <div class="logo">G</div>
+  <h2 id="loginHeading">Welcome back</h2>
+  <p id="loginSubtitle">Sign in to your laboratory account.</p>
+  <label>Username
+    <input id="loginUser" required>
+  </label>
+  <label>Password
+    <input id="loginPass" type="password" required>
+  </label>
+  <button>Sign in</button>
+  <small>Uses your existing SQLite accounts.</small>
+</form>
 </section>
-<section id="appView" class="app hidden"><aside id="sidebar"><div class="brand"><span>G</span><div><b>GMS</b><small>Laboratory System</small></div></div><nav id="nav">
-<button class="nav active" data-page="dashboard">⌂ <i>Dashboard</i></button>
-<button class="nav" data-page="borrow">＋ <i>Borrow Device</i></button>
-<button class="nav" data-page="records">▤ <i>My Records</i></button>
-<button class="nav" data-page="calendar">□ <i>Calendar</i></button>
-<button class="nav" data-page="ranking">↕ <i>Ranking</i></button>
-<button class="nav" data-page="settings">⚙ <i>Settings</i></button>
-</nav><div class="bottom"><button id="installBtn" class="install hidden">Install GMS</button><button id="logoutBtn" class="logout">Sign out</button></div></aside>
-<main><header><button id="menuBtn" class="menuBtn" type="button" aria-label="Open menu">☰</button><div><small>LABORATORY GADGET MONITORING SYSTEM</small><h2 id="title">Dashboard</h2></div><div class="account"><span id="avatar">U</span><div><b id="name">User</b><small id="role">User</small></div></div></header>
+
+<section id="appView" class="app hidden">
+<aside id="sidebar">
+  <div class="brand">
+    <span>G</span>
+    <div>
+      <b>GMS</b>
+      <small>Laboratory System</small>
+    </div>
+  </div>
+
+  <nav id="nav">
+    <button class="nav active" data-page="dashboard">⌂ <i>Dashboard</i></button>
+    <button class="nav" data-page="borrow">＋ <i>Borrow Device</i></button>
+    <button class="nav" data-page="records">▤ <i>My Records</i></button>
+    <button class="nav" data-page="calendar">□ <i>Calendar</i></button>
+    <button class="nav" data-page="ranking">↕ <i>Ranking</i></button>
+    <button class="nav" data-page="settings">⚙ <i>Settings</i></button>
+  </nav>
+
+  <div class="bottom">
+    <button id="installBtn" class="install hidden">Install GMS</button>
+    <button id="logoutBtn" class="logout">Sign out</button>
+  </div>
+</aside>
+
+<main>
+<header>
+  <button id="menuBtn" class="menuBtn" type="button" aria-label="Open menu">☰</button>
+
+  <div>
+    <small>LABORATORY GADGET MONITORING SYSTEM</small>
+    <h2 id="title">Dashboard</h2>
+  </div>
+
+  <div class="account">
+    <span id="avatar">U</span>
+    <div>
+      <b id="name">User</b>
+      <small id="role">User</small>
+    </div>
+  </div>
+</header>
+
 <div id="page" class="page"></div>
-</main></section><script src="/app.js?v=4"></script></body></html>
+</main>
+</section>
+
+<script src="/app.js?v=4"></script>
+
+</body>
+</html>
+
